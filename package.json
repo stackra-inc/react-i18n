@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Comprehensive i18n Vite plugin with i18next integration, auto-file-globbing, type generation, and Refine provider support",
   "main": "./dist/index.cjs",
+  "type": "module",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
@@ -56,6 +57,7 @@
   "peerDependencies": {
     "@stackra/ts-container": "^2.0.10",
     "@stackra/ts-http": "^1.0.0",
+    "react": "^19.2.5",
     "vite": "^8.0.10"
   },
   "dependencies": {
@@ -70,6 +72,7 @@
     "@commitlint/cli": "^20.5.2",
     "@commitlint/config-conventional": "^20.5.0",
     "@commitlint/types": "^20.5.0",
+    "@eslint/js": "^9.39.4",
     "@refinedev/core": "^5.0.12",
     "@stackra/eslint-config": "^1.0.6",
     "@stackra/prettier-config": "^1.0.7",
@@ -79,11 +82,14 @@
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "eslint": "^10.2.1",
+    "eslint-plugin-turbo": "^2.9.6",
     "husky": "^9.1.7",
     "jsdom": "^29.1.0",
     "lint-staged": "^16.4.0",
+    "react": "^19.2.5",
     "tsup": "^8.5.1",
     "typescript": "^6.0.3",
+    "typescript-eslint": "^8.59.1",
     "vite": "^8.0.10",
     "vitest": "^4.1.5"
   },

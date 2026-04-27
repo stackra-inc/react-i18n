@@ -34,9 +34,9 @@
  * - SSR-safe: returns `undefined` when `window` is not available
  */
 
-import { LocaleResolverPriority } from "@/enums";
-import { Str } from "@stackra/ts-support";
-import type { ILocaleResolver } from "./locale-resolver.interface";
+import { LocaleResolverPriority } from '@/enums';
+import { Str } from '@stackra/ts-support';
+import type { ILocaleResolver } from './locale-resolver.interface';
 
 /**
  * Configuration options for {@link UrlPathLocaleResolver}.
@@ -75,7 +75,7 @@ export interface UrlPathLocaleResolverOptions {
  */
 export class UrlPathLocaleResolver implements ILocaleResolver {
   /** @inheritdoc */
-  public readonly name = "url-path";
+  public readonly name = 'url-path';
 
   /** @inheritdoc */
   public readonly priority = LocaleResolverPriority.HIGHEST;
@@ -111,12 +111,12 @@ export class UrlPathLocaleResolver implements ILocaleResolver {
    */
   public resolve(): string | undefined {
     // SSR guard
-    if (typeof window === "undefined") {
+    if (typeof window === 'undefined') {
       return undefined;
     }
 
     const pathname = window.location.pathname;
-    const segments = pathname.split("/").filter(Boolean);
+    const segments = pathname.split('/').filter(Boolean);
 
     if (segments.length <= this.segmentIndex) {
       return undefined;
@@ -132,7 +132,7 @@ export class UrlPathLocaleResolver implements ILocaleResolver {
 
     // If allowed languages are configured, check against them
     if (this.languages) {
-      return Str.contains(this.languages, candidate) ? candidate : undefined;
+      return this.languages.includes(candidate) ? candidate : undefined;
     }
 
     // Otherwise match any ISO 639-1 code (optionally with region)

@@ -7,11 +7,11 @@
  * @module utils/file-scanner
  */
 
-import fg from "fast-glob";
-import { basename, extname } from "path";
-import { Str } from "@stackra/ts-support";
+import fg from 'fast-glob';
+import { basename, extname } from 'path';
+import { Str } from '@stackra/ts-support';
 
-import type { FileMap, I18nPluginOptions } from "@/interfaces";
+import type { FileMap, I18nPluginOptions } from '@/interfaces';
 
 /**
  * Scan the file system for translation files.
@@ -38,11 +38,11 @@ export async function scanTranslationFiles(options: I18nPluginOptions): Promise<
 
   const includePatterns = Array.isArray(options.include)
     ? options.include
-    : [options.include || "**/i18n/**/*.{json,js,ts}"];
+    : [options.include || '**/i18n/**/*.{json,js,ts}'];
 
   const excludePatterns = Array.isArray(options.exclude)
     ? options.exclude
-    : [options.exclude || ""];
+    : [options.exclude || ''];
 
   const resourcePath = options.resourcesPath || process.cwd();
 
@@ -73,7 +73,7 @@ export async function scanTranslationFiles(options: I18nPluginOptions): Promise<
       }
 
       const namespace =
-        extractNamespace(nameWithoutExt, languageCode) || options.defaultNamespace || "translation";
+        extractNamespace(nameWithoutExt, languageCode) || options.defaultNamespace || 'translation';
 
       if (!fileMap[languageCode]) {
         fileMap[languageCode] = {};
@@ -89,10 +89,10 @@ export async function scanTranslationFiles(options: I18nPluginOptions): Promise<
     }
 
     if (options.debug) {
-      console.log("[i18n] Final file map:", JSON.stringify(fileMap, null, 2));
+      console.log('[i18n] Final file map:', JSON.stringify(fileMap, null, 2));
     }
   } catch (error: Error | any) {
-    console.error("[i18n] Error scanning translation files:", error);
+    console.error('[i18n] Error scanning translation files:', error);
     throw error;
   }
 
@@ -123,7 +123,7 @@ function extractLanguageCode(fileName: string, supportedLanguages?: string[]): s
 
   for (const part of parts) {
     const normalized = Str.lower(part);
-    if (Str.contains(supportedLanguages, normalized)) {
+    if (supportedLanguages.includes(normalized)) {
       return normalized;
     }
   }
@@ -151,7 +151,7 @@ function extractNamespace(fileName: string, languageCode: string): string | unde
     return undefined;
   }
 
-  let namespace = Str.trim(fileName.substring(0, languageIndex).replace(/[.-]+$/, ""));
+  const namespace = Str.trim(fileName.substring(0, languageIndex).replace(/[.-]+$/, ''));
 
   return namespace || undefined;
 }
