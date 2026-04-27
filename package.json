@@ -1,6 +1,6 @@
 {
   "name": "@stackra/react-i18n",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Comprehensive i18n Vite plugin with i18next integration, auto-file-globbing, type generation, and Refine provider support",
   "main": "./dist/index.cjs",
   "type": "module",
