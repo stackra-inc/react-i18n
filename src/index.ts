@@ -171,7 +171,5 @@ export type {
 export { LocaleMiddleware } from './middleware';
 
 // ============================================================================
-// Adapters
+// Adapters — use '@stackra/react-i18n/vite' for the Vite plugin
 // ============================================================================
-
-export { i18nPlugin } from './adapters';
